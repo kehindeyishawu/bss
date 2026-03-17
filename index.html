@@ -842,9 +842,11 @@
     function toggleMenu() {
       const links = document.querySelector('.nav-links');
       const open = links.style.display === 'flex';
+      if (open) { links.style.display = 'none'; return; }
+      const navBottom = document.getElementById('navbar').getBoundingClientRect().bottom;
       Object.assign(links.style, {
-        display: open ? 'none' : 'flex', flexDirection: 'column',
-        position: 'fixed', top: '58px', left: '0', right: '0',
+        display: 'flex', flexDirection: 'column',
+        position: 'fixed', top: navBottom + 'px', left: '0', right: '0',
         background: 'rgba(14,14,14,0.98)', padding: '2rem 1.5rem',
         gap: '1.5rem', zIndex: '840', borderBottom: '1px solid rgba(212,43,43,0.2)'
       });
@@ -888,8 +890,12 @@
     }
     document.addEventListener('click', (e) => {
       if (!e.target.closest('#productsNavItem') && !e.target.closest('#megaDropdown')) closeMega();
+      const links = document.querySelector('.nav-links');
+      if (links && links.style.display === 'flex' && !e.target.closest('.nav-links') && !e.target.closest('.hamburger')) links.style.display = 'none';
     });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMega(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { closeMega(); const links = document.querySelector('.nav-links'); if (links) links.style.display = 'none'; }
+    });
     window.addEventListener('resize', () => {
       const mega = document.getElementById('megaDropdown');
       if (mega && mega.classList.contains('open')) {

@@ -56,7 +56,7 @@
     .nav-dropdown-trigger:hover::after, .nav-item-dropdown.open .nav-dropdown-trigger::after { width: 100%; }
     .nav-dropdown-chevron { width: 10px; height: 10px; display: block; flex-shrink: 0; transition: transform 0.25s; }
     .nav-item-dropdown.open .nav-dropdown-chevron { transform: rotate(180deg); }
-    .mega-dropdown { position: fixed; left: 0; right: 0; top: 0; background: rgba(14,14,14,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(212,43,43,0.2); z-index: 800; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-8px); transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s; }
+    .mega-dropdown { position: fixed; left: 0; right: 0; top: 0; background: rgba(14,14,14,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(212,43,43,0.2); z-index: 860; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-8px); transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s; }
     .mega-dropdown.open { opacity: 1; visibility: visible; pointer-events: all; transform: translateY(0); }
     .mega-inner { padding: 3rem 4rem 3.5rem; display: grid; grid-template-columns: 220px 1fr 1fr; gap: 0; }
     .mega-label-col { padding-right: 3rem; border-right: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; }
@@ -460,9 +460,11 @@
     function toggleMenu() {
       const links = document.querySelector('.nav-links');
       const open = links.style.display === 'flex';
+      if (open) { links.style.display = 'none'; return; }
+      const navBottom = document.getElementById('navbar').getBoundingClientRect().bottom;
       Object.assign(links.style, {
-        display: open ? 'none' : 'flex', flexDirection: 'column',
-        position: 'fixed', top: '58px', left: '0', right: '0',
+        display: 'flex', flexDirection: 'column',
+        position: 'fixed', top: navBottom + 'px', left: '0', right: '0',
         background: 'rgba(14,14,14,0.98)', padding: '2rem 1.5rem',
         gap: '1.5rem', zIndex: '840', borderBottom: '1px solid rgba(212,43,43,0.2)'
       });
@@ -505,8 +507,12 @@
     }
     document.addEventListener('click', (e) => {
       if (!e.target.closest('#productsNavItem') && !e.target.closest('#megaDropdown')) closeMega();
+      const links = document.querySelector('.nav-links');
+      if (links && links.style.display === 'flex' && !e.target.closest('.nav-links') && !e.target.closest('.hamburger')) links.style.display = 'none';
     });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMega(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { closeMega(); const links = document.querySelector('.nav-links'); if (links) links.style.display = 'none'; }
+    });
     window.addEventListener('resize', () => {
       const mega = document.getElementById('megaDropdown');
       if (mega && mega.classList.contains('open')) {
