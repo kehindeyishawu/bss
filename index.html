@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Basic Sharp Services Nig. Ltd | Redefining Efficiency in Service</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --red: #D42B2B;
+      --red-dark: #A81E1E;
+      --black: #0E0E0E;
+      --white: #F5F5F0;
+      --gray: #1C1C1C;
+      --gray-mid: #2E2E2E;
+      --gray-light: #888;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Barlow', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.45;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 4rem;
+      background: rgba(14,14,14,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(212,43,43,0.18);
+      transition: padding 0.3s;
+    }
+
+    /* Logo: BSS left, divider, SHARP right */
+    .nav-logo {
+      display: flex; align-items: center; gap: 0;
+      text-decoration: none;
+    }
+    .nav-bss-block {
+      display: flex; flex-direction: column;
+      align-items: flex-start; gap: 0.05rem;
+    }
+    .nav-bss-block .bss-mark {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.9rem; color: var(--red);
+      letter-spacing: 0.02em; line-height: 1;
+    }
+    .nav-bss-block .bss-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.58rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.16em;
+      color: #555; line-height: 1;
+    }
+    .nav-logo-divider {
+      width: 1px; height: 2.2rem;
+      background: rgba(255,255,255,0.1);
+      margin: 0 0.9rem; flex-shrink: 0;
+    }
+    .nav-sharp-block {
+      display: flex; flex-direction: column;
+      align-items: flex-start; gap: 0.12rem;
+    }
+    .nav-sharp-block .sharp-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.5rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.2em;
+      color: #444; line-height: 1;
+    }
+    .nav-sharp-block svg { display: block; width: 64px; height: 15px; }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #666; text-decoration: none; transition: color 0.2s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 2px; background: var(--red); transition: width 0.25s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: var(--red); color: var(--white) !important;
+      padding: 0.5rem 1.4rem;
+    }
+    .nav-cta:hover { background: var(--red-dark) !important; }
+    .nav-cta::after { display: none !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); }
+
+    /* MEGA DROPDOWN */
+    .nav-item-dropdown { position: static; }
+    .nav-dropdown-trigger {
+      display: flex; align-items: center; gap: 0.4rem; cursor: pointer;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #666; text-decoration: none; transition: color 0.2s; position: relative;
+      background: none; border: none; padding: 0;
+    }
+    .nav-dropdown-trigger::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 2px; background: var(--red); transition: width 0.25s;
+    }
+    .nav-dropdown-trigger:hover,
+    .nav-item-dropdown.open .nav-dropdown-trigger { color: var(--white); }
+    .nav-dropdown-trigger:hover::after,
+    .nav-item-dropdown.open .nav-dropdown-trigger::after { width: 100%; }
+    .nav-dropdown-chevron {
+      width: 10px; height: 10px; display: block; flex-shrink: 0;
+      transition: transform 0.25s;
+    }
+    .nav-item-dropdown.open .nav-dropdown-chevron { transform: rotate(180deg); }
+
+    .mega-dropdown {
+      position: fixed; left: 0; right: 0;
+      top: 0; /* will be set by JS */
+      background: rgba(14,14,14,0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(212,43,43,0.2);
+      z-index: 860;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transform: translateY(-8px);
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+    }
+    .mega-dropdown.open {
+      opacity: 1; visibility: visible; pointer-events: all;
+      transform: translateY(0);
+    }
+    .mega-inner {
+      padding: 3rem 4rem 3.5rem;
+      display: grid;
+      grid-template-columns: 220px 1fr 1fr;
+      gap: 0;
+    }
+    .mega-label-col {
+      padding-right: 3rem;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      display: flex; flex-direction: column; justify-content: flex-start;
+    }
+    .mega-label-col .mega-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem;
+      font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 0.8rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .mega-label-col .mega-eyebrow::before {
+      content: ''; display: block; width: 1.5rem; height: 2px; background: var(--red);
+    }
+    .mega-label-col h2 {
+      font-family: 'Bebas Neue', sans-serif; font-size: 3rem;
+      line-height: 1; color: var(--white); margin-bottom: 1rem;
+    }
+    .mega-label-col p {
+      font-size: 0.82rem; color: #555; font-weight: 300; line-height: 1.7;
+    }
+
+    .mega-category {
+      padding: 0 3rem;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+    .mega-category:last-child { border-right: none; }
+    .mega-cat-title {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem;
+      font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+      color: #444; margin-bottom: 1.5rem; padding-bottom: 0.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .mega-items { list-style: none; display: flex; flex-direction: column; gap: 0.2rem; }
+    .mega-items li a {
+      display: flex; align-items: center; gap: 0.8rem;
+      padding: 0.65rem 0.8rem;
+      text-decoration: none;
+      transition: background 0.15s;
+      border-radius: 0;
+    }
+    .mega-items li a:hover { background: rgba(212,43,43,0.07); }
+    .mega-items li a:hover .mega-item-name { color: var(--white); }
+    .mega-items li a:hover .mega-item-arrow { opacity: 1; transform: translateX(0); }
+    .mega-item-icon {
+      width: 2.2rem; height: 2.2rem; background: rgba(212,43,43,0.08);
+      border: 1px solid rgba(212,43,43,0.18);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; flex-shrink: 0;
+    }
+    .mega-item-text { flex: 1; }
+    .mega-item-name {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.92rem; letter-spacing: 0.05em; text-transform: uppercase;
+      color: #bbb; transition: color 0.15s; display: block;
+    }
+    .mega-item-sub {
+      font-size: 0.75rem; color: #444; font-weight: 300;
+      margin-top: 0.1rem; display: block;
+    }
+    .mega-item-arrow {
+      color: var(--red); font-size: 0.75rem;
+      opacity: 0; transform: translateX(-4px);
+      transition: opacity 0.15s, transform 0.15s;
+    }
+
+    @media (max-width: 900px) {
+      /* On mobile the dropdown becomes a full bottom-sheet style drawer */
+      .mega-dropdown {
+        /* Stretch from nav bottom to viewport bottom */
+        bottom: 0;
+        top: 0; /* overridden by JS, but bottom:0 makes it fill remaining space */
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch; /* smooth momentum scroll on iOS */
+        overscroll-behavior: contain;      /* stop scroll bleeding to page */
+      }
+      .mega-inner {
+        grid-template-columns: 1fr;
+        padding: 1.5rem 1.5rem 4rem; /* extra bottom padding for thumb reach */
+        gap: 0;
+      }
+      .mega-label-col {
+        display: none;
+      }
+      .mega-category { padding: 0; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 1.2rem; margin-bottom: 1.2rem; }
+      .mega-category:first-of-type { padding-top: 0.2rem; }
+      .mega-cat-title { padding-top: 0.2rem; margin-bottom: 1.2rem; }
+      .mega-category:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+      /* Larger touch targets on mobile */
+      .mega-items li a { padding: 0.9rem 0.6rem; }
+      .mega-item-icon { width: 2.6rem; height: 2.6rem; font-size: 1rem; }
+      .mega-item-name { font-size: 1rem; }
+      .mega-item-sub { font-size: 0.8rem; }
+      /* Always show the arrow on mobile (no hover state) */
+      .mega-item-arrow { opacity: 1; transform: translateX(0); }
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; padding: 0 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 80% 50%, rgba(212,43,43,0.12) 0%, transparent 70%),
+        linear-gradient(135deg, #0E0E0E 0%, #1a0a0a 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(212,43,43,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,43,43,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-bss-bg {
+      position: absolute; right: -2rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Bebas Neue', sans-serif; font-size: 32vw;
+      color: rgba(212,43,43,0.05); line-height: 1;
+      user-select: none; pointer-events: none; letter-spacing: -0.02em;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 780px; }
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.78rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.8rem;
+      opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .hero-eyebrow::before { content: ''; display: block; width: 2.5rem; height: 2px; background: var(--red); }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 9vw, 9rem); line-height: 0.92;
+      margin-bottom: 1.8rem;
+      opacity: 0; animation: fadeUp 0.9s 0.35s forwards;
+    }
+    .hero-title span { color: var(--red); }
+    .hero-desc {
+      font-size: 1.05rem; font-weight: 300; line-height: 1.75; color: #aaa;
+      max-width: 520px; margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp 0.9s 0.5s forwards;
+    }
+    .hero-actions {
+      display: flex; gap: 1rem; align-items: center;
+      opacity: 0; animation: fadeUp 0.9s 0.65s forwards;
+    }
+    .btn-primary {
+      background: var(--red); color: var(--white);
+      padding: 0.9rem 2.2rem;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase;
+      text-decoration: none; border: 2px solid var(--red);
+      transition: background 0.2s, color 0.2s; display: inline-block;
+    }
+    .btn-primary:hover { background: transparent; color: var(--red); }
+    .btn-secondary {
+      color: var(--white); padding: 0.9rem 2.2rem;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase;
+      text-decoration: none; border: 2px solid rgba(255,255,255,0.2);
+      transition: border-color 0.2s; display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--white); }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 4rem;
+      display: flex; align-items: center; gap: 0.8rem;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-light);
+      opacity: 0; animation: fadeUp 0.9s 0.9s forwards;
+    }
+    .scroll-line { width: 3rem; height: 1px; background: var(--gray-light); position: relative; overflow: hidden; }
+    .scroll-line::after {
+      content: ''; position: absolute; inset: 0; background: var(--red);
+      animation: scrollPulse 1.8s 1s infinite;
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--red); padding: 1.5rem 4rem;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+    }
+    .stat-item { text-align: center; border-right: 1px solid rgba(255,255,255,0.2); padding: 0.5rem 1rem; }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; line-height: 1; color: var(--white); }
+    .stat-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-top: 0.2rem; }
+    .stat-sharp-cell { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; }
+    .stat-sharp-cell svg { display: block; width: 82px; height: 19px; }
+
+    /* SECTIONS */
+    section { padding: 7rem 4rem; }
+    .section-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 0.8rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .section-eyebrow::before { content: ''; display: block; width: 2rem; height: 2px; background: var(--red); }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 5vw, 5rem); line-height: 1; margin-bottom: 1.5rem; }
+
+    /* ABOUT */
+    #about { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; background: var(--gray); }
+    .about-visual { position: relative; }
+    .about-box { aspect-ratio: 4/5; background: var(--gray-mid); position: relative; overflow: hidden; }
+    .about-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-badge {
+      position: absolute; bottom: -1.5rem; right: -1.5rem;
+      width: 8rem; height: 8rem; background: var(--red);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    }
+    .about-badge-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; line-height: 1; }
+    .about-badge-text { font-family: 'Barlow Condensed', sans-serif; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; line-height: 1.3; }
+    .about-content p { color: #aaa; font-size: 1rem; line-height: 1.8; font-weight: 300; margin-bottom: 1.2rem; }
+    .about-content p strong { color: var(--white); font-weight: 600; }
+    .about-tagline { margin-top: 2rem; padding: 1.2rem 1.5rem; border-left: 3px solid var(--red); font-style: italic; font-size: 1.1rem; color: var(--white); }
+
+    /* SERVICES */
+    #services { background: var(--black); }
+    .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; }
+    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.05); }
+    .service-card { background: var(--gray); padding: 2.5rem 2rem; position: relative; overflow: hidden; transition: background 0.3s; cursor: default; }
+    .service-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--red); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+    .service-card:hover { background: var(--gray-mid); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon { width: 3.5rem; height: 3.5rem; background: rgba(212,43,43,0.1); border: 1px solid rgba(212,43,43,0.3); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; transition: background 0.3s; }
+    .service-card:hover .service-icon { background: rgba(212,43,43,0.2); }
+    .service-num { position: absolute; top: 1.5rem; right: 1.5rem; font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: rgba(255,255,255,0.04); line-height: 1; }
+    .service-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.2rem; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.8rem; }
+    .service-desc { font-size: 0.9rem; color: #888; line-height: 1.7; font-weight: 300; }
+
+    /* WHY US */
+    #why { background: var(--gray); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+    .why-list { list-style: none; margin-top: 2rem; }
+    .why-item { display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .why-item:last-child { border-bottom: none; }
+    .why-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--red); min-width: 2.5rem; line-height: 1; }
+    .why-text h4 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .why-text p { font-size: 0.9rem; color: #888; line-height: 1.6; font-weight: 300; }
+    .why-card-stack { display: grid; gap: 1rem; }
+    .why-card { background: var(--black); padding: 2rem; border: 1px solid rgba(212,43,43,0.1); }
+    .why-card-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem; }
+    .why-card-value { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; line-height: 1; }
+    .why-card-sub { font-size: 0.85rem; color: #666; margin-top: 0.3rem; }
+
+    /* CONTACT */
+    #contact { background: var(--black); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; margin-top: 4rem; }
+    .contact-info h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; margin-bottom: 1rem; }
+    .contact-info p { color: #888; font-size: 0.95rem; line-height: 1.8; font-weight: 300; margin-bottom: 2rem; }
+    .contact-detail { display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .contact-detail-icon { width: 2.5rem; height: 2.5rem; background: rgba(212,43,43,0.1); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .contact-detail-text { font-size: 0.9rem; color: #aaa; }
+    .contact-detail-text strong { display: block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: #555; margin-bottom: 0.2rem; }
+    .map-wrap { position: relative; height: 100%; min-height: 420px; }
+    .map-wrap iframe { width: 100%; height: 100%; min-height: 420px; border: none; display: block; filter: grayscale(1) invert(1) brightness(0.85) contrast(1.1); }
+    .map-overlay-badge {
+      position: absolute; bottom: 1.5rem; right: 1.5rem;
+      background: var(--red); padding: 0.8rem 1.2rem;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem;
+      font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--white); display: flex; flex-direction: column; gap: 0.15rem;
+      pointer-events: none;
+    }
+    .map-overlay-badge span:first-child { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.05em; line-height: 1; }
+
+    /* FOOTER */
+    footer { background: var(--gray); border-top: 1px solid rgba(212,43,43,0.2); padding: 3rem 4rem 2rem; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 3rem; }
+    .footer-brand .bss-mark { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--red); line-height: 1; }
+    .footer-sharp-badge { display: flex; align-items: center; gap: 0.8rem; margin-top: 1rem; padding: 0.6rem 1rem; border: 1px solid rgba(212,43,43,0.2); background: rgba(212,43,43,0.05); width: fit-content; }
+    .footer-sharp-badge svg { display: block; width: 68px; height: 16px; }
+    .footer-sharp-badge .badge-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.56rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #555; line-height: 1.4; }
+    .footer-brand p { color: #555; font-size: 0.88rem; line-height: 1.75; margin-top: 1rem; font-weight: 300; max-width: 280px; }
+    .footer-col h5 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); margin-bottom: 1.2rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.7rem; }
+    .footer-col ul li a { color: #555; text-decoration: none; font-size: 0.88rem; font-weight: 300; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-bottom p { font-size: 0.78rem; color: #333; }
+    .footer-rc { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; letter-spacing: 0.1em; color: #333; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scrollPulse { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 4rem 1.5rem; }
+      #hero { padding: 0 1.5rem; }
+      .hero-title { font-size: clamp(3rem, 14vw, 5rem); }
+      .stats-bar { grid-template-columns: repeat(2,1fr); padding: 1.5rem; }
+      #about, #why, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .services-grid { grid-template-columns: repeat(2,1fr); }
+      .services-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-scroll { left: 1.5rem; }
+    }
+    @media (max-width: 500px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav id="navbar">
+    <a class="nav-logo" href="#">
+      <span class="nav-bss-block">
+        <span class="bss-mark">BSS</span>
+        <span class="bss-sub">Basic Sharp Services</span>
+      </span>
+      <span class="nav-logo-divider"></span>
+      <span class="nav-sharp-block">
+        <span class="sharp-eyebrow">Authorized Distributor</span>
+        <svg class="sharp-wordmark" width="52" height="16" viewBox="0 0 52 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <text x="0" y="13" font-family="Arial Black, Arial, sans-serif" font-size="14" font-weight="900" font-style="italic" fill="#D42B2B" letter-spacing="1">SHARP</text>
+</svg>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="why-us.html">Why Us</a></li>
+      <li class="nav-item-dropdown" id="productsNavItem">
+        <button class="nav-dropdown-trigger" onclick="toggleMega(event)" aria-expanded="false" aria-controls="megaDropdown">
+          Products
+          <svg class="nav-dropdown-chevron" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </li>
+      <li><a href="#contact" class="nav-cta">Get In Touch</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- MEGA DROPDOWN -->
+  <div class="mega-dropdown" id="megaDropdown" role="region" aria-label="Products menu">
+    <div class="mega-inner">
+      <div class="mega-label-col">
+        <span class="mega-eyebrow">Sharp Products</span>
+        <h2>Our<br>Range</h2>
+        <p>Genuine Sharp products distributed across Nigeria. Office-grade and home-ready solutions.</p>
+      </div>
+      <div class="mega-category">
+        <div class="mega-cat-title">MFP &amp; Copiers</div>
+        <ul class="mega-items">
+          <li><a href="product/BP-20M24.html">
+            <div class="mega-item-icon">🖨️</div>
+            <div class="mega-item-text">
+              <span class="mega-item-name">BP-20M24</span>
+              <span class="mega-item-sub">A4 Mono MFP · 24 ppm</span>
+            </div>
+            <span class="mega-item-arrow">→</span>
+          </a></li>
+          <li><a href="product/BP-20M31.html">
+            <div class="mega-item-icon">🖨️</div>
+            <div class="mega-item-text">
+              <span class="mega-item-name">BP-20M31</span>
+              <span class="mega-item-sub">A4 Mono MFP · 31 ppm</span>
+            </div>
+            <span class="mega-item-arrow">→</span>
+          </a></li>
+          <li><a href="product/BP-30M31.html">
+            <div class="mega-item-icon">🖨️</div>
+            <div class="mega-item-text">
+              <span class="mega-item-name">BP-30M31</span>
+              <span class="mega-item-sub">A3 Mono MFP · 31 ppm</span>
+            </div>
+            <span class="mega-item-arrow">→</span>
+          </a></li>
+          <li><a href="product/BP-30M35.html">
+            <div class="mega-item-icon">🖨️</div>
+            <div class="mega-item-text">
+              <span class="mega-item-name">BP-30M35</span>
+              <span class="mega-item-sub">A3 Mono MFP · 35 ppm</span>
+            </div>
+            <span class="mega-item-arrow">→</span>
+          </a></li>
+          <li><a href="product/BP-22C25.html">
+            <div class="mega-item-icon">🖨️</div>
+            <div class="mega-item-text">
+              <span class="mega-item-name">BP-22C25</span>
+              <span class="mega-item-sub">A4 Colour MFP · 25 ppm</span>
+            </div>
+            <span class="mega-item-arrow">→</span>
+          </a></li>
+          <li><a href="product/BP-30C25.html">
+            <div class="mega-item-icon">🖨️</div>
+            <div class="mega-item-text">
+              <span class="mega-item-name">BP-30C25</span>
+              <span class="mega-item-sub">A3 Colour MFP · 25 ppm</span>
+            </div>
+            <span class="mega-item-arrow">→</span>
+          </a></li>
+        </ul>
+      </div>
+      <div class="mega-category">
+        <div class="mega-cat-title">Toner &amp; Ink</div>
+        <ul class="mega-items">
+          <li><a href="product/BP-FT201.html">
+            <div class="mega-item-icon">🖋️</div>
+            <div class="mega-item-text">
+              <span class="mega-item-name">BP-FT201</span>
+              <span class="mega-item-sub">Black Toner · BP-20M24 / BP-20M24L / BP-20M31</span>
+            </div>
+            <span class="mega-item-arrow">→</span>
+          </a></li>
+          <li><a href="product/BP-GT200.html">
+            <div class="mega-item-icon">🖋️</div>
+            <div class="mega-item-text">
+              <span class="mega-item-name">BP-GT200</span>
+              <span class="mega-item-sub">Black Toner HY · BP-20M24 / BP-20M31</span>
+            </div>
+            <span class="mega-item-arrow">→</span>
+          </a></li>
+          <li><a href="product/BP-FT301.html">
+            <div class="mega-item-icon">🖋️</div>
+            <div class="mega-item-text">
+              <span class="mega-item-name">BP-FT301</span>
+              <span class="mega-item-sub">Black Toner · BP-30M31 / BP-30M35</span>
+            </div>
+            <span class="mega-item-arrow">→</span>
+          </a></li>
+          <li><a href="product/BP-GT20YA-MA-CA.html">
+            <div class="mega-item-icon">🖋️</div>
+            <div class="mega-item-text">
+              <span class="mega-item-name">BP-GT20YA/MA/CA</span>
+              <span class="mega-item-sub">CMY Colour Toner · BP-22C25</span>
+            </div>
+            <span class="mega-item-arrow">→</span>
+          </a></li>
+          <li><a href="product/BP-GT30BA.html">
+            <div class="mega-item-icon">🖋️</div>
+            <div class="mega-item-text">
+              <span class="mega-item-name">BP-GT30BA</span>
+              <span class="mega-item-sub">Black Toner · BP-30C25</span>
+            </div>
+            <span class="mega-item-arrow">→</span>
+          </a></li>
+          <li><a href="product/BP-GT30YA-MA-CA.html">
+            <div class="mega-item-icon">🖋️</div>
+            <div class="mega-item-text">
+              <span class="mega-item-name">BP-GT30YA/MA/CA</span>
+              <span class="mega-item-sub">CMY Colour Toner · BP-30C25</span>
+            </div>
+            <span class="mega-item-arrow">→</span>
+          </a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-bss-bg">BSS</div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Basic Sharp Services Nig. Ltd &middot; RC 445324</p>
+      <h1 class="hero-title">Redefining<br><span>Efficiency</span><br>In Service</h1>
+      <p class="hero-desc">Nigeria's trusted partner for Sharp office equipment, domestic appliances, consumables, and professional support services — delivering quality you can count on.</p>
+      <div class="hero-actions">
+        <a href="services.html" class="btn-primary">Our Services</a>
+        <a href="#contact" class="btn-secondary">Get a Quote</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Scroll to explore
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">100+</div>
+      <div class="stat-label">Products Available</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Service Categories</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-sharp-cell">
+        <svg class="sharp-wordmark" width="82" height="22" viewBox="0 0 82 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <text x="0" y="18" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" font-style="italic" fill="#ffffff" letter-spacing="1">SHARP</text>
+</svg>
+        <div class="stat-label" style="color:rgba(255,255,255,0.65);">Authorized Distributor</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Customer Support</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-visual reveal">
+      <div class="about-box">
+        <img src="images/bss_about.jpg" alt="Sharp multifunction copier with BSS branding" loading="lazy">
+      </div>
+      <div class="about-badge">
+        <div class="about-badge-num">RC</div>
+        <div class="about-badge-text">445324<br>Registered</div>
+      </div>
+    </div>
+    <div class="about-content reveal">
+      <p class="section-eyebrow">Who We Are</p>
+      <h2 class="section-title">Built on Trust,<br>Driven by Results</h2>
+      <p><strong>Basic Sharp Services Nigeria Limited</strong> is a leading distributor of Sharp products and a comprehensive solutions provider for businesses and homes across Nigeria.</p>
+      <p>Led by <strong>Olufemi L. Adebayo (MD/CEO)</strong>, we have built our reputation on delivering genuine products, responsive service, and technical expertise that our clients can rely on.</p>
+      <p>From sourcing the right office equipment to ensuring your appliances are properly maintained, our team is committed to one goal — your complete satisfaction.</p>
+      <blockquote class="about-tagline">"…redefining efficiency in service"</blockquote>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-header reveal">
+      <div>
+        <p class="section-eyebrow">What We Offer</p>
+        <h2 class="section-title">Our Core<br>Services</h2>
+      </div>
+      <a href="services.html" class="btn-primary">View All Services</a>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <div class="service-icon">🖨️</div>
+        <div class="service-name">Office Equipment</div>
+        <p class="service-desc">Printers, copiers, scanners, projectors, and complete Sharp office solutions for businesses of all sizes.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">02</div>
+        <div class="service-icon">🏠</div>
+        <div class="service-name">Domestic Appliances</div>
+        <p class="service-desc">Refrigerators, air conditioners, microwaves, washing machines, and more. Genuine Sharp home appliances.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">03</div>
+        <div class="service-icon">📦</div>
+        <div class="service-name">Consumables</div>
+        <p class="service-desc">Toner cartridges, ink, drums, paper, and all consumable supplies to keep your equipment running.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">04</div>
+        <div class="service-icon">🔧</div>
+        <div class="service-name">Support Services</div>
+        <p class="service-desc">Installation, maintenance, repairs, and technical support. Our certified technicians minimise your downtime.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="reveal">
+      <p class="section-eyebrow">Why Choose Us</p>
+      <h2 class="section-title">The BSS<br>Difference</h2>
+      <ul class="why-list">
+        <li class="why-item">
+          <span class="why-num">01</span>
+          <div class="why-text"><h4>Authorized Sharp Distributor</h4><p>Every product is 100% genuine, backed by manufacturer warranties and Sharp's quality standards.</p></div>
+        </li>
+        <li class="why-item">
+          <span class="why-num">02</span>
+          <div class="why-text"><h4>End-to-End Solutions</h4><p>From procurement and delivery to installation and ongoing support — we handle everything.</p></div>
+        </li>
+        <li class="why-item">
+          <span class="why-num">03</span>
+          <div class="why-text"><h4>Fast, Responsive Service</h4><p>Our support team responds quickly and efficiently — minimising disruption to your operations.</p></div>
+        </li>
+        <li class="why-item">
+          <span class="why-num">04</span>
+          <div class="why-text"><h4>Trusted Nationwide</h4><p>Serving corporate offices, government institutions, SMEs, and homeowners across Nigeria.</p></div>
+        </li>
+      </ul>
+    </div>
+    <div class="why-card-stack reveal">
+      <div class="why-card">
+        <div class="why-card-label">Our Promise</div>
+        <div class="why-card-value">Genuine</div>
+        <div class="why-card-sub">100% authentic Sharp products only</div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-label">Turnaround</div>
+        <div class="why-card-value">Fast</div>
+        <div class="why-card-sub">Quick delivery and rapid support response</div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-label">Coverage</div>
+        <div class="why-card-value">National</div>
+        <div class="why-card-sub">Serving clients across Nigeria</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-eyebrow reveal">Get In Touch</p>
+    <h2 class="section-title reveal">Let's Talk<br>Business</h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>Get In Touch With Us</h3>
+        <p>Call us, send an email, or visit our office on Victoria Island. Our team is ready to help with product enquiries, quotes, and service appointments.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">👤</div>
+          <div class="contact-detail-text"><strong>Managing Director</strong>Olufemi L. Adebayo — MD/CEO</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🏢</div>
+          <div class="contact-detail-text"><strong>Company</strong>Basic Sharp Services Nig. Ltd (RC 445324)</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📧</div>
+          <div class="contact-detail-text"><strong>Email</strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4920272f26092b283a202a3a21283b393a2c3b3f202a2c672a2624">[email&#160;protected]</a></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-text"><strong>Location</strong>5 Sanusi Fafunwa Street, Victoria Island, Lagos, Nigeria</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📞</div>
+          <div class="contact-detail-text"><strong>Telephone</strong>08033017085, 08139028910</div>
+        </div>
+      </div>
+      <div class="map-wrap reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.7!2d3.4219!3d6.4281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf53aec4f2a2f%3A0x5e8b4b4b4b4b4b4b!2s5%20Sanusi%20Fafunwa%20St%2C%20Victoria%20Island%2C%20Lagos!5e0!3m2!1sen!2sng!4v1"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="BSS Office Location — 5 Sanusi Fafunwa Street, Victoria Island, Lagos">
+        </iframe>
+        <div class="map-overlay-badge">
+          <span>BSS</span>
+          <span>Victoria Island, Lagos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="bss-mark">BSS</div>
+        <div class="footer-sharp-badge">
+          <svg class="sharp-wordmark" width="68" height="20" viewBox="0 0 68 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <text x="0" y="16" font-family="Arial Black, Arial, sans-serif" font-size="17" font-weight="900" font-style="italic" fill="#D42B2B" letter-spacing="1">SHARP</text>
+</svg>
+          <span class="badge-label">Authorized<br>Distributor</span>
+        </div>
+        <p>Basic Sharp Services Nigeria Limited — your trusted partner for Sharp office equipment, domestic appliances, consumables, and professional support services nationwide.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="services.html">Office Equipment</a></li>
+          <li><a href="services.html">Domestic Appliances</a></li>
+          <li><a href="services.html">Consumables</a></li>
+          <li><a href="services.html">Support Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="why-us.html">Why Choose Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Basic Sharp Services Nig. Ltd. All rights reserved.</p>
+      <span class="footer-rc">RC 445324 &middot; &hellip;redefining efficiency in service</span>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => io.observe(el));
+
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      nav.style.padding = window.scrollY > 60 ? '0.6rem 4rem' : '1rem 4rem';
+    });
+
+    function toggleMenu() {
+      const links = document.querySelector('.nav-links');
+      const open = links.style.display === 'flex';
+      Object.assign(links.style, {
+        display: open ? 'none' : 'flex', flexDirection: 'column',
+        position: 'fixed', top: '58px', left: '0', right: '0',
+        background: 'rgba(14,14,14,0.98)', padding: '2rem 1.5rem',
+        gap: '1.5rem', zIndex: '840', borderBottom: '1px solid rgba(212,43,43,0.2)'
+      });
+    }
+
+    // MEGA DROPDOWN LOGIC
+    function toggleMega(e) {
+      e.stopPropagation();
+      const navItem = document.getElementById('productsNavItem');
+      const mega = document.getElementById('megaDropdown');
+      const trigger = navItem.querySelector('.nav-dropdown-trigger');
+      const isOpen = navItem.classList.contains('open');
+      closeMega();
+      if (!isOpen) {
+        navItem.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+        const navBottom = document.getElementById('navbar').getBoundingClientRect().bottom;
+        mega.style.top = navBottom + 'px';
+        if (window.innerWidth <= 900) {
+          mega.style.height = (window.innerHeight - navBottom) + 'px';
+        } else {
+          mega.style.height = '';
+        }
+        mega.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        // Close hamburger menu if open on mobile so it doesn't overlap the dropdown
+        const navLinks = document.querySelector('.nav-links');
+        if (navLinks && navLinks.style.display === 'flex') {
+          navLinks.style.display = 'none';
+        }
+      }
+    }
+    function closeMega() {
+      const navItem = document.getElementById('productsNavItem');
+      const mega = document.getElementById('megaDropdown');
+      const trigger = navItem ? navItem.querySelector('.nav-dropdown-trigger') : null;
+      if (navItem) navItem.classList.remove('open');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      if (mega) mega.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#productsNavItem') && !e.target.closest('#megaDropdown')) closeMega();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMega(); });
+    window.addEventListener('resize', () => {
+      const mega = document.getElementById('megaDropdown');
+      if (mega && mega.classList.contains('open')) {
+        const navBottom = document.getElementById('navbar').getBoundingClientRect().bottom;
+        mega.style.top = navBottom + 'px';
+        mega.style.height = window.innerWidth <= 900 ? (window.innerHeight - navBottom) + 'px' : '';
+      }
+    });
+
+
+  </script>
+</body>
+</html>
