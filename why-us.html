@@ -205,6 +205,27 @@
     .footer-bottom p { font-size: 0.78rem; color: #333; }
     .footer-rc { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; letter-spacing: 0.1em; color: #333; }
 
+    /* AWARDS */
+    .awards-section { padding: 7rem 4rem; background: var(--gray); position: relative; overflow: hidden; }
+    .awards-section::before { content: 'SHARP'; position: absolute; right: -2rem; top: 50%; transform: translateY(-50%); font-family: 'Bebas Neue', sans-serif; font-size: 20rem; color: rgba(255,255,255,0.02); line-height: 1; pointer-events: none; user-select: none; }
+    .awards-header { text-align: center; margin-bottom: 4rem; }
+    .awards-header .section-eyebrow { justify-content: center; margin-bottom: 1rem; }
+    .awards-header .section-title { font-size: clamp(2rem, 4vw, 3rem); }
+    .awards-header p { color: #555; font-size: 0.95rem; font-weight: 300; margin-top: 1rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+    .awards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; max-width: 980px; margin: 0 auto; }
+    .award-card { position: relative; background: var(--black); border: 1px solid rgba(212,43,43,0.15); overflow: hidden; transition: transform 0.35s ease, border-color 0.35s, box-shadow 0.35s; }
+    .award-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.6) 100%); pointer-events: none; }
+    .award-card:hover { transform: translateY(-8px); border-color: rgba(212,43,43,0.45); box-shadow: 0 32px 70px rgba(0,0,0,0.55), 0 0 0 1px rgba(212,43,43,0.1); }
+    .award-card-img { width: 100%; aspect-ratio: 4/3; object-fit: contain; background: var(--black); display: block; transition: transform 0.5s ease, filter 0.4s; filter: grayscale(20%) brightness(0.9); }
+    .award-card:hover .award-card-img { transform: scale(1.04); filter: grayscale(0%) brightness(1); }
+    .award-card-body { padding: 1.8rem 2rem 2.2rem; position: relative; z-index: 1; }
+    .award-card-body::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--red), transparent 70%); }
+    .award-year { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.63rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); margin-bottom: 0.9rem; }
+    .award-year::before { content: ''; display: block; width: 1.2rem; height: 1px; background: var(--red); }
+    .award-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; color: var(--white); line-height: 1.1; margin-bottom: 0.7rem; letter-spacing: 0.03em; }
+    .award-meta { font-size: 0.82rem; color: #ddd; font-weight: 300; line-height: 1.7; }
+    .award-meta strong { color: #fff; font-weight: 400; display: block; margin-bottom: 0.1rem; }
+
     /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
@@ -216,6 +237,8 @@
       .reasons-grid { grid-template-columns: 1fr 1fr; }
       .promises-grid { grid-template-columns: 1fr; }
       .quote-section { padding: 4rem 1.5rem; }
+      .awards-section { padding: 4rem 1.5rem; }
+      .awards-grid { grid-template-columns: 1fr; gap: 2rem; }
       .cta-strip { flex-direction: column; gap: 2rem; text-align: center; padding: 4rem 1.5rem; }
       .footer-top { grid-template-columns: 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -439,6 +462,39 @@
     <p class="quote-text">"Our clients don't just need Sharp products — they need a partner they can trust to keep their operations running. That is exactly what Basic Sharp Services exists to be."</p>
     <p class="quote-attribution">Olufemi L. Adebayo &mdash; Managing Director &amp; CEO, Basic Sharp Services Nig. Ltd</p>
   </div>
+
+  <!-- AWARDS -->
+  <section class="awards-section">
+    <div class="awards-header reveal">
+      <p class="section-eyebrow">Recognition</p>
+      <h2 class="section-title">Recognized by Sharp.<br>Trusted in Nigeria.</h2>
+      <p>Basic Sharp Services has been formally recognized by Sharp Middle East at their international summits — a distinction earned by only a select group of distributors across the region.</p>
+    </div>
+    <div class="awards-grid">
+      <div class="award-card reveal">
+        <img src="images/crystal award.png" alt="Sharp Solution Summit 2014 crystal plaque awarded to Basic Sharp Services" class="award-card-img" loading="lazy">
+        <div class="award-card-body">
+          <div class="award-year">2014</div>
+          <div class="award-title">Sharp Solution Summit</div>
+          <div class="award-meta">
+            <strong>Crystal Plaque · Presented to Basic Sharp</strong>
+            Dubai, U.A.E &mdash; 19th February 2014
+          </div>
+        </div>
+      </div>
+      <div class="award-card reveal">
+        <img src="images/BSScert.png" alt="Sharp Solutions Summit 2015 Certificate of Participation awarded to Lateef Olufemi Adebayo" class="award-card-img" loading="lazy">
+        <div class="award-card-body">
+          <div class="award-year">2015</div>
+          <div class="award-title">Sharp Solutions Summit</div>
+          <div class="award-meta">
+            <strong>Certificate of Participation · Lateef Olufemi Adebayo</strong>
+            Atlantis, The Palm, Dubai &mdash; 4th March 2015
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- CTA STRIP -->
   <div class="cta-strip">
