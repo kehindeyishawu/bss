@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /BSS_Handover_Report.html
+
+Sitemap: https://basicsharpservice.com/sitemap.xml
