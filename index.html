@@ -22,7 +22,8 @@
   <title>Basic Sharp Services Nig. Ltd | Redefining Efficiency in Service</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/css/styles.css"/>
-  <style>    /* HERO */
+  <style>
+    /* HERO */
     #hero {
       min-height: 100vh; display: flex; flex-direction: column;
       justify-content: center; padding: 0 4rem;
@@ -70,15 +71,6 @@
       display: flex; gap: 1rem; align-items: center;
       opacity: 0; animation: fadeUp 0.9s 0.65s forwards;
     }
-    .btn-primary {
-      background: var(--red); color: var(--white);
-      padding: 0.9rem 2.2rem;
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-      font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase;
-      text-decoration: none; border: 2px solid var(--red);
-      transition: background 0.2s, color 0.2s; display: inline-block;
-    }
-    .btn-primary:hover { background: transparent; color: var(--red); }
     .btn-secondary {
       color: var(--white); padding: 0.9rem 2.2rem;
       font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
@@ -99,7 +91,6 @@
       content: ''; position: absolute; inset: 0; background: var(--red);
       animation: scrollPulse 1.8s 1s infinite;
     }
-
     /* STATS BAR */
     .stats-bar {
       background: var(--red); padding: 1.5rem 4rem;
@@ -111,18 +102,9 @@
     .stat-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-top: 0.2rem; }
     .stat-sharp-cell { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; }
     .stat-sharp-cell svg { display: block; width: 82px; height: 19px; }
-
     /* SECTIONS */
     section { padding: 7rem 4rem; }
-    .section-eyebrow {
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-      font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
-      color: var(--red); margin-bottom: 0.8rem;
-      display: flex; align-items: center; gap: 0.8rem;
-    }
-    .section-eyebrow::before { content: ''; display: block; width: 2rem; height: 2px; background: var(--red); }
     .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 5vw, 5rem); line-height: 1; margin-bottom: 1.5rem; }
-
     /* ABOUT */
     #about { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; background: var(--gray); }
     .about-visual { position: relative; }
@@ -138,7 +120,6 @@
     .about-content p { color: #aaa; font-size: 1rem; line-height: 1.8; font-weight: 300; margin-bottom: 1.2rem; }
     .about-content p strong { color: var(--white); font-weight: 600; }
     .about-tagline { margin-top: 2rem; padding: 1.2rem 1.5rem; border-left: 3px solid var(--red); font-style: italic; font-size: 1.1rem; color: var(--white); }
-
     /* SERVICES */
     #services { background: var(--black); }
     .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; }
@@ -152,7 +133,6 @@
     .service-num { position: absolute; top: 1.5rem; right: 1.5rem; font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: rgba(255,255,255,0.04); line-height: 1; }
     .service-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.2rem; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.8rem; }
     .service-desc { font-size: 0.9rem; color: #888; line-height: 1.7; font-weight: 300; }
-
     /* WHY US */
     #why { background: var(--gray); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
     .why-list { list-style: none; margin-top: 2rem; }
@@ -166,7 +146,6 @@
     .why-card-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem; }
     .why-card-value { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; line-height: 1; }
     .why-card-sub { font-size: 0.85rem; color: #666; margin-top: 0.3rem; }
-
     /* CONTACT */
     #contact { background: var(--black); }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; margin-top: 4rem; }
@@ -191,18 +170,10 @@
       pointer-events: none;
     }
     .map-overlay-badge span:first-child { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.05em; line-height: 1; }
-
     /* ANIMATIONS */
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes scrollPulse { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
     /* RESPONSIVE */
     @media (max-width: 900px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
       section { padding: 4rem 1.5rem; }
       #hero { padding: 0 1.5rem; }
       .hero-title { font-size: clamp(3rem, 14vw, 5rem); }
@@ -210,8 +181,6 @@
       #about, #why, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
       .services-grid { grid-template-columns: repeat(2,1fr); }
       .services-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
-      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
       .form-row { grid-template-columns: 1fr; }
       .hero-scroll { left: 1.5rem; }
     }
@@ -278,6 +247,7 @@
         <span class="mega-eyebrow">Sharp Products</span>
         <h2>Our<br>Range</h2>
         <p>Genuine Sharp products distributed across Nigeria. Office-grade and home-ready solutions.</p>
+        <a class="mega-enquire" href="/index.html#contact">Can't find a model? We source it →</a>
       </div>
       <div class="mega-category">
         <div class="mega-cat-title">MFP &amp; Copiers</div>

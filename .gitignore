@@ -4,3 +4,6 @@
 
 # Handover document (local only)
 BSS_Handover_Report.html
+
+# Browser automation artifacts (local test runs)
+.playwright-cli/

@@ -22,148 +22,21 @@
   <title>Sharp BP-30M35 | Basic Sharp Services Nig. Ltd</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/css/styles.css"/>
-  <style>    /* SHARED */
-    .btn-primary { background: var(--red); color: var(--white); padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--red); transition: background 0.2s, color 0.2s; display: inline-block; }
-    .btn-primary:hover { background: transparent; color: var(--red); }
-    .btn-ghost { color: var(--white); padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border: 2px solid rgba(255,255,255,0.2); transition: border-color 0.2s; display: inline-block; }
-    .btn-ghost:hover { border-color: var(--white); }
-    .section-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--red); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; }
-    .section-eyebrow::before { content: ''; display: block; width: 2rem; height: 2px; background: var(--red); }
-    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 4.5vw, 4.5rem); line-height: 1; margin-bottom: 1.5rem; }
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  <link rel="stylesheet" href="/css/product.css"/>
+  <style>
     /* SHARED */
-    .btn-primary { background: var(--red); color: var(--white); padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--red); transition: background 0.2s, color 0.2s; display: inline-block; }
-    .btn-primary:hover { background: transparent; color: var(--red); }
-    .btn-ghost { color: var(--white); padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border: 2px solid rgba(255,255,255,0.2); transition: border-color 0.2s; display: inline-block; }
-    .btn-ghost:hover { border-color: var(--white); }
-    .section-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--red); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; }
-    .section-eyebrow::before { content: ''; display: block; width: 2rem; height: 2px; background: var(--red); }
-    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 4.5vw, 4.5rem); line-height: 1; margin-bottom: 1.5rem; }
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-
-
+    /* SHARED */
     /* PAGE HERO */
-    .page-hero { min-height: 55vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; background: linear-gradient(135deg, #0E0E0E 0%, #1a0a0a 100%); }
-    .page-hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(212,43,43,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(212,43,43,0.04) 1px, transparent 1px); background-size: 60px 60px; }
-    .page-hero-glow { position: absolute; right: 0; top: 0; width: 50%; height: 100%; background: radial-gradient(ellipse 70% 80% at 80% 40%, rgba(212,43,43,0.1) 0%, transparent 70%); }
-    .page-hero-bg-text { position: absolute; right: -1rem; bottom: -2rem; font-family: 'Bebas Neue', sans-serif; font-size: 22vw; color: rgba(212,43,43,0.04); line-height: 1; user-select: none; pointer-events: none; }
-    .page-hero-content { position: relative; z-index: 2; }
-    .breadcrumb { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #444; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
-    .breadcrumb a { color: #444; text-decoration: none; transition: color 0.2s; }
-    .breadcrumb a:hover { color: var(--red); }
-    .breadcrumb span { color: var(--red); }
-    .page-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 7vw, 7rem); line-height: 0.92; opacity: 0; animation: fadeUp 0.9s 0.2s forwards; }
-    .page-title span { color: var(--red); }
-    .page-subtitle { font-size: 1rem; color: #666; font-weight: 300; margin-top: 1.2rem; max-width: 540px; line-height: 1.7; opacity: 0; animation: fadeUp 0.9s 0.4s forwards; }
     .hero-badges { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.9s 0.55s forwards; }
     .hero-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.4rem 0.9rem; border: 1px solid rgba(212,43,43,0.35); color: var(--red); background: rgba(212,43,43,0.06); }
-
-
     /* QUICK STATS BAR */
-    .quick-stats { background: var(--red); padding: 1.4rem 4rem; display: grid; grid-template-columns: repeat(5, 1fr); }
-    .qs-item { text-align: center; border-right: 1px solid rgba(255,255,255,0.2); padding: 0.4rem 1rem; }
-    .qs-item:last-child { border-right: none; }
-    .qs-num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; line-height: 1; color: var(--white); }
-    .qs-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-top: 0.15rem; }
-
     /* PRODUCT VISUAL + OVERVIEW */
-    .product-overview { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; padding: 7rem 4rem; background: var(--gray); }
-    .product-image-wrap { position: relative; }
-    .product-image-box { aspect-ratio: 4/5; background: var(--gray-mid); position: relative; overflow: hidden; }
-    .product-image-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
     /* BSS badge overlay */
-    .product-image-badge {
-      position: absolute; bottom: -1.5rem; right: -1.5rem;
-      width: 7rem; height: 7rem; background: var(--red);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 0.2rem;
-    }
-    .product-image-badge .badge-bss { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--white); line-height: 1; letter-spacing: 0.04em; }
-    .product-image-badge .badge-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 0.48rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.75); line-height: 1; text-align: center; }
-    .product-info p { color: #aaa; font-size: 1rem; line-height: 1.85; font-weight: 300; margin-bottom: 1.2rem; }
-    .product-info p strong { color: var(--white); font-weight: 600; }
-    .product-actions { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
-
     /* FEATURES */
-    .features-section { padding: 7rem 4rem; background: var(--black); }
-    .features-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; }
-    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.05); }
-    .feature-card { background: var(--gray); padding: 2.5rem 2rem; position: relative; overflow: hidden; transition: background 0.3s; }
-    .feature-card:hover { background: var(--gray-mid); }
-    .feature-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--red); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
-    .feature-card:hover::after { transform: scaleX(1); }
-    .feature-icon { width: 3rem; height: 3rem; background: rgba(212,43,43,0.1); border: 1px solid rgba(212,43,43,0.25); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1.2rem; }
-    .feature-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; color: var(--white); }
-    .feature-desc { font-size: 0.88rem; color: #666; line-height: 1.7; font-weight: 300; }
-
     /* SPECS TABLE */
-    .specs-section { padding: 7rem 4rem; background: var(--gray); }
-    .specs-tabs { display: flex; gap: 0; margin-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .spec-tab { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.8rem 1.8rem; cursor: pointer; color: #555; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s, border-color 0.2s; background: none; border-top: none; border-left: none; border-right: none; }
-    .spec-tab.active { color: var(--white); border-bottom-color: var(--red); }
-    .spec-tab:hover { color: #aaa; }
-    .spec-panel { display: none; }
-    .spec-panel.active { display: block; }
-    .spec-table { width: 100%; border-collapse: collapse; }
-    .spec-table tr { border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .spec-table tr:last-child { border-bottom: none; }
-    .spec-table td { padding: 0.85rem 1rem; font-size: 0.9rem; line-height: 1.6; vertical-align: top; }
-    .spec-table td:first-child { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: #555; width: 38%; padding-left: 0; }
-    .spec-table td:last-child { color: #bbb; font-weight: 300; }
-    .spec-table tr:hover td { background: rgba(212,43,43,0.03); }
-
     /* COMPATIBLE SUPPLIES */
-    .supplies-section { padding: 7rem 4rem; background: var(--black); }
-    .supplies-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,0.05); margin-top: 3rem; }
-    .supply-card { background: var(--gray); padding: 2rem; display: flex; align-items: center; gap: 1.5rem; transition: background 0.3s; text-decoration: none; }
-    .supply-card:hover { background: var(--gray-mid); }
-    .supply-icon { width: 3.5rem; height: 3.5rem; background: rgba(212,43,43,0.1); border: 1px solid rgba(212,43,43,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
-    .supply-info { flex: 1; }
-    .supply-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); margin-bottom: 0.25rem; }
-    .supply-desc { font-size: 0.82rem; color: #666; font-weight: 300; }
-    .supply-arrow { color: var(--red); font-size: 1rem; opacity: 0.5; transition: opacity 0.2s, transform 0.2s; }
-    .supply-card:hover .supply-arrow { opacity: 1; transform: translateX(4px); }
-
     /* CTA STRIP */
-    .cta-strip { background: var(--red); padding: 5rem 4rem; display: flex; justify-content: space-between; align-items: center; position: relative; overflow: hidden; }
-    .cta-strip-bg { position: absolute; right: 2rem; top: 50%; transform: translateY(-50%); font-family: 'Bebas Neue', sans-serif; font-size: 18rem; color: rgba(0,0,0,0.1); line-height: 1; user-select: none; pointer-events: none; }
-    .cta-strip h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 3.5vw, 3.5rem); line-height: 1.05; position: relative; z-index: 1; }
-    .cta-strip-actions { display: flex; gap: 1rem; position: relative; z-index: 1; flex-wrap: wrap; }
-    .btn-white { background: var(--white); color: var(--black); padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--white); transition: background 0.2s, color 0.2s; display: inline-block; }
-    .btn-white:hover { background: transparent; color: var(--white); }
-    .btn-outline-white { color: var(--white); padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border: 2px solid rgba(255,255,255,0.5); transition: border-color 0.2s; display: inline-block; }
-    .btn-outline-white:hover { border-color: var(--white); }
-
     /* RESPONSIVE */
-    @media (max-width: 900px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .page-hero { padding: 7rem 1.5rem 3rem; }
-      .quick-stats { grid-template-columns: repeat(3, 1fr); padding: 1.2rem 1.5rem; gap: 0.5rem; }
-      .quick-stats .qs-item:nth-child(4) { border-right: 1px solid rgba(255,255,255,0.2); }
-      .quick-stats .qs-item:nth-child(3) { border-right: none; }
-      .product-overview { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
-      .features-section, .specs-section, .supplies-section { padding: 4rem 1.5rem; }
-      .features-grid { grid-template-columns: 1fr 1fr; }
-      .features-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-      .supplies-grid { grid-template-columns: 1fr; }
-      .specs-tabs { overflow-x: auto; }
-      .cta-strip { flex-direction: column; gap: 2rem; text-align: center; padding: 4rem 1.5rem; }
-      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
-      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
-    }
-    @media (max-width: 500px) {
-      .features-grid { grid-template-columns: 1fr; }
-      .quick-stats { grid-template-columns: repeat(2, 1fr); }
-      .quick-stats .qs-item:nth-child(3) { border-right: 1px solid rgba(255,255,255,0.2); }
-      .quick-stats .qs-item:nth-child(2) { border-right: none; }
-    }
-
   </style>
     <script type="application/ld+json">
 {
@@ -235,6 +108,7 @@
         <span class="mega-eyebrow">Sharp Products</span>
         <h2>Our<br>Range</h2>
         <p>Genuine Sharp products distributed across Nigeria. Office-grade and home-ready solutions.</p>
+        <a class="mega-enquire" href="/index.html#contact">Can't find a model? We source it →</a>
       </div>
       <div class="mega-category">
         <div class="mega-cat-title">MFP &amp; Copiers</div>
@@ -396,8 +270,9 @@
   <!-- PRODUCT OVERVIEW -->
   <section class="product-overview">
     <div class="product-image-wrap reveal">
-      <div class="product-image-box">
-        <img src="image/BP-30M35.jpg" alt="Sharp BP-30M35" loading="lazy">
+      <div class="product-image-box" data-product="BP-30M35">
+        <img src="image/BP-30M35.jpg" alt="Sharp BP-30M35" loading="lazy"
+             onerror="this.closest('.product-image-box').classList.add('no-image'); this.remove();">
       </div>
       <div class="product-image-badge">
         <span class="badge-bss">BSS</span>
@@ -582,6 +457,7 @@
     <div class="cta-strip-actions reveal">
       <a href="../index.html#contact" class="btn-white">Request a Quote</a>
       <a href="../services.html" class="btn-outline-white">View All Products</a>
+      <p class="cta-note">Looking for a Sharp model not listed here? We source the full range — <a href="/index.html#contact">tell us what you need</a>.</p>
     </div>
   </div>
 

@@ -158,6 +158,16 @@ nav {
 .mega-label-col p {
   font-size: 0.82rem; color: #555; font-weight: 300; line-height: 1.7;
 }
+/* Invites enquiries for Sharp models not listed in the dropdown. */
+.mega-enquire {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  margin-top: 1.4rem; padding-top: 1.1rem;
+  border-top: 1px solid rgba(212,43,43,0.22);
+  font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--red); text-decoration: none; transition: color 0.2s;
+}
+.mega-enquire:hover { color: var(--white); }
 
 .mega-category {
   padding: 0 3rem;
@@ -250,3 +260,49 @@ footer { background: var(--gray); border-top: 1px solid rgba(212,43,43,0.2); pad
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
 .footer-bottom p { font-size: 0.78rem; color: #333; }
 .footer-rc { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; letter-spacing: 0.1em; color: #333; }
+
+/* ===== SHARED PAGE CHROME (extracted) ===== */
+.btn-primary { background: var(--red); color: var(--white); padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--red); transition: background 0.2s, color 0.2s; display: inline-block; }
+.btn-primary:hover { background: transparent; color: var(--red); }
+.section-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--red); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; }
+.section-eyebrow::before { content: ''; display: block; width: 2rem; height: 2px; background: var(--red); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.page-hero { min-height: 55vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; background: linear-gradient(135deg, #0E0E0E 0%, #1a0a0a 100%); }
+.page-hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(212,43,43,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(212,43,43,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+.page-hero-glow { position: absolute; right: 0; top: 0; width: 50%; height: 100%; background: radial-gradient(ellipse 70% 80% at 80% 40%, rgba(212,43,43,0.1) 0%, transparent 70%); }
+.page-hero-content { position: relative; z-index: 2; }
+.breadcrumb a:hover { color: var(--red); }
+.breadcrumb span { color: var(--red); }
+.page-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 7vw, 7rem); line-height: 0.92; opacity: 0; animation: fadeUp 0.9s 0.2s forwards; }
+.page-title span { color: var(--red); }
+.btn-ghost { color: var(--white); padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border: 2px solid rgba(255,255,255,0.2); transition: border-color 0.2s; display: inline-block; }
+.btn-ghost:hover { border-color: var(--white); }
+.section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 4.5vw, 4.5rem); line-height: 1; margin-bottom: 1.5rem; }
+.cta-strip { background: var(--red); padding: 5rem 4rem; display: flex; justify-content: space-between; align-items: center; position: relative; overflow: hidden; }
+.cta-strip-bg { position: absolute; right: 2rem; top: 50%; transform: translateY(-50%); font-family: 'Bebas Neue', sans-serif; font-size: 18rem; color: rgba(0,0,0,0.1); line-height: 1; user-select: none; pointer-events: none; }
+.btn-white { background: var(--white); color: var(--black); padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--white); transition: background 0.2s, color 0.2s; display: inline-block; }
+.btn-white:hover { background: transparent; color: var(--white); }
+.btn-outline-white { color: var(--white); padding: 0.9rem 2.2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border: 2px solid rgba(255,255,255,0.5); transition: border-color 0.2s; display: inline-block; }
+.btn-outline-white:hover { border-color: var(--white); }
+.page-hero-bg-text { position: absolute; right: -1rem; bottom: -2rem; font-family: 'Bebas Neue', sans-serif; font-size: 22vw; color: rgba(212,43,43,0.04); line-height: 1; user-select: none; pointer-events: none; }
+.breadcrumb { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #444; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+.breadcrumb a { color: #444; text-decoration: none; transition: color 0.2s; }
+.page-subtitle { font-size: 1rem; color: #666; font-weight: 300; margin-top: 1.2rem; max-width: 540px; line-height: 1.7; opacity: 0; animation: fadeUp 0.9s 0.4s forwards; }
+.cta-strip h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 3.5vw, 3.5rem); line-height: 1.05; position: relative; z-index: 1; }
+.cta-strip-actions { display: flex; gap: 1rem; position: relative; z-index: 1; flex-wrap: wrap; }
+/* Sits inside .cta-strip-actions; flex-basis 100% wraps it onto its own line
+   under the buttons, so the existing CTA layout is untouched. */
+.cta-note { flex-basis: 100%; margin-top: 0.2rem; font-size: 0.84rem; font-weight: 300; color: rgba(255,255,255,0.82); line-height: 1.6; }
+.cta-note a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
+.cta-note a:hover { opacity: 0.75; }
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  .page-hero { padding: 7rem 1.5rem 3rem; }
+  .cta-strip { flex-direction: column; gap: 2rem; text-align: center; padding: 4rem 1.5rem; }
+}
